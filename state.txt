@@ -1,0 +1,7 @@
+TODO: rewrite this in termion
+TODO: finish this today
+TODO: Adding Full Crud
+PROGRESS: sleeping
+DONE: idk
+DONE: eating
+DONE: touch grass
