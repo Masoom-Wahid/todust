@@ -1,7 +1,9 @@
-TODO: rewrite this in termion
-TODO: finish this today
-TODO: Adding Full Crud
+TODO: touching alot of grass
+TODO: lets add some 
+TODO: playing witcher
+TODO: testing
 PROGRESS: sleeping
+PROGRESS: Eating Chicken
 DONE: idk
 DONE: eating
-DONE: touch grass
+DONE: i want to learn rust

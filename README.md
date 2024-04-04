@@ -6,9 +6,14 @@ A Simple Todolist app written in Rust using ncurses
 cargo run
 ```
 
-## add todolists by
+## add todolist form shell by
 ```shell
 cargo run add "checking"
+```
+
+### check ur todos from shell by
+```
+cargo run list
 ```
 
 ### list of commands
@@ -19,6 +24,9 @@ cargo run add "checking"
     "Tab" : "changes the tab",
     "Enter" : "change the task from todo -> progress -> done"
     "q" : "exits",
-    "e" : "saves the state"
+    "e" : "saves the state",
+    "i" : "enters input mode to add todos",
+    "Esc(input mode)" : "leaves the input screen without adding the todo",
+    "Enter(input mode)" : "saves the todos",
 
 ```

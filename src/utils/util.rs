@@ -52,24 +52,36 @@ fn parse_item(line: &str) -> Option<(Tabs, &str)> {
     todo_item.or(done_item).or(prog_item)
 }
 
-pub fn run_from_cl(_action : &str, data : Option<String>,file_path: &str){
+
+pub fn list_from_cl(file_path : &str) -> Result<()>{
+    let mut todos : Vec<String> = Vec::new();
+    let mut progress : Vec<String> = Vec::new();
+    let mut dones : Vec<String> = Vec::new();
+    load_state(&mut todos, &mut dones, &mut progress, &file_path)?;
+    for (index,todo) in todos.iter().enumerate(){
+        println!("{} => {}",index,todo);
+    }
+    process::exit(0);
+}
+
+
+pub fn add_from_cl(data : Option<String>,file_path: &str) -> Result<()>{
     let mut todos : Vec<String> = Vec::new();
     let mut progress : Vec<String> = Vec::new();
     let mut dones : Vec<String> = Vec::new();
     match data {
         Some(todo) => {
-            load_state(&mut todos, &mut dones, &mut progress, &file_path).unwrap();
+            load_state(&mut todos, &mut dones, &mut progress, &file_path)?;
             todos.push(todo.to_string());
             println!("Added Todo: {}", todo);
-            save_state(&mut todos, &mut dones, &mut progress, file_path).unwrap();
-            process::exit(1);
+            save_state(&mut todos, &mut dones, &mut progress, file_path)?;
+            process::exit(0);
         }
         _ => {
             println!("Couldnt add a todo");
             process::exit(1);
         }
     }
-    
 }
 
 pub fn load_state(todos: &mut Vec<String>, dones: &mut Vec<String>,progress : &mut Vec<String>,file_path: &str) -> Result<()> {
