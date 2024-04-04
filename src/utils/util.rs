@@ -65,6 +65,27 @@ pub fn list_from_cl(file_path : &str) -> Result<()>{
 }
 
 
+pub fn del_from_cl(data : Option<String>,file_path : &str) -> Result<()>{
+    let mut todos : Vec<String> = Vec::new();
+    let mut progress : Vec<String> = Vec::new();
+    let mut dones : Vec<String> = Vec::new();
+    match data {
+        Some(data) => {
+            let index : usize = data.parse()?;
+            load_state(&mut todos, &mut dones, &mut progress, &file_path)?;
+            let deleted_todo = todos[index].clone();
+            todos.remove(index);
+            println!("Deleted {}", deleted_todo);
+            save_state(&mut todos, &mut dones, &mut progress, file_path)?;
+            process::exit(0);
+        }
+        _ => {
+            println!("Index Required");
+            process::exit(1);
+        }
+    }
+}
+
 pub fn add_from_cl(data : Option<String>,file_path: &str) -> Result<()>{
     let mut todos : Vec<String> = Vec::new();
     let mut progress : Vec<String> = Vec::new();

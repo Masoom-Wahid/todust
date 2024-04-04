@@ -27,7 +27,7 @@ fn main() -> Result<()>{
     check for the file path if found , else by default i use state.txt
      */
     let file_path = match env.next() {
-        Some(path) if path != "list" && path != "add" => path,
+        Some(path) if path != "list" && path != "add" && path != "del" => path,
         _ => {
             println!("file path required");
             return Ok(())
@@ -40,6 +40,7 @@ fn main() -> Result<()>{
     match env.next() {
         Some(action) if action == "add" => add_from_cl(env.next(),&file_path)?,
         Some(action) if action == "list" => list_from_cl(&file_path)?,
+        Some(action) if action == "del" => del_from_cl(env.next(),&file_path)?,
         _ => {}
     }
 

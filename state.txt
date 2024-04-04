@@ -1,9 +1,2 @@
-TODO: touching alot of grass
-TODO: lets add some 
 TODO: playing witcher
-TODO: testing
-PROGRESS: sleeping
-PROGRESS: Eating Chicken
-DONE: idk
-DONE: eating
-DONE: i want to learn rust
+TODO: finishing crud today

@@ -3,13 +3,24 @@ A Simple Todolist app written in Rust using ncurses
 
 ## How to run
 ```shell
-cargo run
+cargo run state.txt
 ```
 
 ## add todolist form shell by
 ```shell
-cargo run add "checking"
+cargo run add state.txt "checking"
 ```
+
+## list todos by
+```shell
+cargo run list
+```
+
+## del todos by their index (You Can Find their index when running list command)
+```shell
+cargo run del state.txt 0
+```
+
 
 ### check ur todos from shell by
 ```
