@@ -21,27 +21,29 @@ const PROG_PAIR : i16 = 4;
 
 
 fn main() -> Result<()>{ 
-    let mut env = env::args(); env.next().unwrap();
+    let args : Vec<String> = env::args().collect();
+    let mut file_path :Option<String> = None;
+    let mut action : Option<String> = None;
+    let mut data : Option<String> = None;
 
-    /*
-    check for the file path if found , else by default i use state.txt
-     */
-    let file_path = match env.next() {
-        Some(path) if path != "list" && path != "add" && path != "del" => path,
-        _ => {
-            println!("file path required");
-            return Ok(())
+    for arg in args.iter().skip(1){
+        if arg.starts_with("file="){
+            file_path = Some(arg[5..].to_owned());
+        }else if arg.starts_with("action="){
+            action = Some(arg[7..].to_owned());
+        }else if arg.starts_with("data="){
+            data = Some(arg[5..].to_owned());
         }
-    };
+    }
+    let file_path = file_path.unwrap();
 
-    /*
-    any action can be handled here
-     */
-    match env.next() {
-        Some(action) if action == "add" => add_from_cl(env.next(),&file_path)?,
-        Some(action) if action == "list" => list_from_cl(&file_path)?,
-        Some(action) if action == "del" => del_from_cl(env.next(),&file_path)?,
-        _ => {}
+    if let Some(action) = action {
+        match action.as_str() {
+            "add" => add_from_cl(data, &file_path)?,
+            "list" => list_from_cl(&file_path)?,
+            "del" => del_from_cl(data, &file_path)?,
+            _ => {}
+        }
     }
 
     

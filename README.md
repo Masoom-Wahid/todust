@@ -3,22 +3,22 @@ A Simple Todolist app written in Rust using ncurses
 
 ## How to run
 ```shell
-cargo run state.txt
+cargo run file=state.txt
 ```
 
 ## add todolist form shell by
 ```shell
-cargo run add state.txt "checking"
+cargo run file=state.txt action=add data="Studing DSA"
 ```
 
 ## list todos by
 ```shell
-cargo run list
+cargo run file=state.txt action=list
 ```
 
 ## del todos by their index (You Can Find their index when running list command)
 ```shell
-cargo run del state.txt 0
+cargo run file=state.txt action=del data=0
 ```
 
 
@@ -54,6 +54,6 @@ cargo build --release
 function todust(){
     local action="$1"
     local data="$2"
-    relese_file_path/todust state_txt_file_path "$action" "$data"
+    relese_file_path/todust file=state_txt_file_path action="$action" data="$data"
 }
 ```

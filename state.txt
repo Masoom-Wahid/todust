@@ -1,2 +1,3 @@
-TODO: playing witcher
-TODO: finishing crud today
+TODO: Starting golang
+TODO: just checking
+TODO: test
