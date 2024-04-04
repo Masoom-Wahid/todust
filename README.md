@@ -30,3 +30,19 @@ cargo run list
     "Enter(input mode)" : "saves the todos",
 
 ```
+
+### You can also build it to use from anywhere in the terminal
+#### first build the release
+```bash
+cargo build --release
+```
+
+#### add this function into your .bashrc file
+### add your release path and state path
+```bash
+function todust(){
+    local action="$1"
+    local data="$2"
+    relese_file_path/todust state_txt_file_path "$action" "$data"
+}
+```
